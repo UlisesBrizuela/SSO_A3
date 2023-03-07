@@ -14,8 +14,6 @@ def LeerArchivo():
             procesos.append((proceso, int(ciclos), int(prioridad)))
     return procesos
 
-
-
 def RoundRobin(procesos, Q):
     system('cls')
     cola = deque(procesos)
@@ -29,11 +27,31 @@ def RoundRobin(procesos, Q):
             print(f"El proceso: {nombre} volvio a la cola con {quantum} quantum restantes.\n")
         else:
             print(f"Proceso {nombre} terminado.\n")
-    input("presiona Enter para continuar")
+    input("presiona Enter para continuar...")
     Menu()
 
-def SFJ():
+def SFJ(procesos):
     system('cls')
+    cola = deque(sorted(procesos, key = lambda x: x[1]))
+    while cola:
+        proceso_actual = cola.popleft()
+        nombre, tamaño, p = proceso_actual
+        print(f"Proceso ejecutado: {nombre} con {tamaño} ciclos.\n")
+    input("presiona Enter para continuar...")
+    Menu()
+
+def FIFO(procesos):
+    system('cls')
+    cola = deque(procesos)
+    proceso_actual = cola.popleft()
+    nombre, quantum, p = proceso_actual
+    while cola:
+        proceso_actual = cola.popleft()
+        nombre, q, p = proceso_actual
+        print(f"Proceso ejecutado: {nombre}.\n")
+    input("presiona Enter para continuar...")
+    Menu()
+
 
 
 
@@ -54,25 +72,26 @@ def Menu():
         
         # """))
 
-        if m == 1: 
-            RoundRobin(procesos, 3)
+        if m == 1:
+            Quantum = 3
+            RoundRobin(procesos, Quantum)
         elif m == 2: 
-            print("opcion 2")
+            SFJ(procesos)
         elif m == 3: 
-            print("opcion 3")
+            FIFO(procesos)
         elif m == 4: 
             print("opcion 4")
         elif m == 0:
             system('cls')
             exit();
         else:
-            print("Opcion Invalida")
-            input("presiona Enter para continuar")
+            print("Opcion Invalida.")
+            input("presiona Enter para continuar...")
             Menu()
 
     except ValueError: 
-        print("Dato invalido")
-        input("presiona Enter para continuar")
+        print("Dato invalido.")
+        input("presiona Enter para continuar...")
         Menu()
 
 
