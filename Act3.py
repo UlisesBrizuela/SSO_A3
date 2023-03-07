@@ -52,11 +52,6 @@ def FIFO(procesos):
     input("presiona Enter para continuar...")
     Menu()
 
-
-
-
-
-
 def Menu(): 
     system('cls')
     procesos = LeerArchivo()
