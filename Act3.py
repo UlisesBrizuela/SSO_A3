@@ -43,14 +43,22 @@ def SFJ(procesos):
 def FIFO(procesos):
     system('cls')
     cola = deque(procesos)
-    proceso_actual = cola.popleft()
-    nombre, quantum, p = proceso_actual
     while cola:
         proceso_actual = cola.popleft()
         nombre, q, p = proceso_actual
         print(f"Proceso ejecutado: {nombre}.\n")
     input("presiona Enter para continuar...")
     Menu()
+
+def Prioridades(procesos):
+    system('cls')
+    cola = deque(sorted(procesos, key = lambda x: x[2]))
+    while cola:
+        proceso_actual = cola.popleft()
+        nombre, q, prioridad = proceso_actual
+        print(f"Proceso Ejecutado: {nombre}, con prioridad {prioridad}.\n")
+    input("presiona Enter para continuar...")
+    Menu()    
 
 def Menu(): 
     system('cls')
