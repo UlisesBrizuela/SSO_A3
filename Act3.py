@@ -27,7 +27,8 @@ def RoundRobin(procesos, Q):
             print(f"El proceso: {nombre} volvio a la cola con {quantum} quantum restantes.\n")
         else:
             print(f"Proceso {nombre} terminado.\n")
-    input("presiona Enter para continuar...")
+
+    input("\npresiona Enter para continuar...")
     Menu()
 
 def SFJ(procesos):
@@ -37,7 +38,8 @@ def SFJ(procesos):
         proceso_actual = cola.popleft()
         nombre, tamaño, p = proceso_actual
         print(f"Proceso ejecutado: {nombre} con {tamaño} ciclos.\n")
-    input("presiona Enter para continuar...")
+
+    input("\npresiona Enter para continuar...")
     Menu()
 
 def FIFO(procesos):
@@ -47,7 +49,8 @@ def FIFO(procesos):
         proceso_actual = cola.popleft()
         nombre, q, p = proceso_actual
         print(f"Proceso ejecutado: {nombre}.\n")
-    input("presiona Enter para continuar...")
+
+    input("\npresiona Enter para continuar...")
     Menu()
 
 def Prioridades(procesos):
@@ -57,7 +60,8 @@ def Prioridades(procesos):
         proceso_actual = cola.popleft()
         nombre, q, prioridad = proceso_actual
         print(f"Proceso Ejecutado: {nombre}, con prioridad {prioridad}.\n")
-    input("presiona Enter para continuar...")
+
+    input("\npresiona Enter para continuar...")
     Menu()    
 
 def Menu(): 
@@ -83,18 +87,18 @@ def Menu():
         elif m == 3: 
             FIFO(procesos)
         elif m == 4: 
-            print("opcion 4")
+            Prioridades(procesos)
         elif m == 0:
             system('cls')
             exit();
         else:
             print("Opcion Invalida.")
-            input("presiona Enter para continuar...")
+            input("\npresiona Enter para continuar...")
             Menu()
 
     except ValueError: 
         print("Dato invalido.")
-        input("presiona Enter para continuar...")
+        input("\npresiona Enter para continuar...")
         Menu()
 
 
